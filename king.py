@@ -1,6 +1,7 @@
 import cordinates
 import Open
 #White king
+
 cords = cordinates.getValues()
 wpa=cords[0]
 wpb=cords[1]

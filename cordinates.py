@@ -1,4 +1,4 @@
-
+import threading
 import SPAWN
 import Open
 
@@ -86,7 +86,7 @@ def getValues():
 
 
 
-def changeValues(wpa1,wpb1,wpc1,wpd1,wpe1,wpf1,wpg1,wph1,bpa1,bpb1,bpc1,bpd1,bpe1,bpf1,bpg1,bph1,wra1,wrh1,bra1,brh1,wq1,bq1,wk1,bk1,bng1,bnb1,wnb1,wng1,bcc,wbf1,bbc1,bbf1):
+def changeValues(wpa1,wpb1,wpc1,wpd1,wpe1,wpf1,wpg1,wph1,bpa1,bpb1,bpc1,bpd1,bpe1,bpf1,bpg1,bph1,wra1,wrh1,bra1,brh1,wq1,bq1,wk1,bk1,bng1,bnb1,wnb1,wng1,wbc1,wbf1,bbc1,bbf1):
   global wpa
   global wpb
   global wpc
@@ -136,6 +136,7 @@ def changeValues(wpa1,wpb1,wpc1,wpd1,wpe1,wpf1,wpg1,wph1,bpa1,bpb1,bpc1,bpd1,bpe
   bpg = bpg1
   bph = bph1
   wra = wra1
+  wbc = wbc1
   bq = bq1
   wrh = wrh1
   bra = bra1
@@ -150,10 +151,10 @@ def changeValues(wpa1,wpb1,wpc1,wpd1,wpe1,wpf1,wpg1,wph1,bpa1,bpb1,bpc1,bpd1,bpe
   wbf = wbf1
   bbc = bbc1
   bbf = bbf1
+  threading.Thread(target=SPAWN.draw(wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,wra,wrh,bra,brh,wq,bq,wk,bk,bng,bnb,wnb,wng,wbc,wbf,bbc,bbf))
   
-  SPAWN.draw(wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,wra,wrh,bra,brh,wq,bq,wk,bk,bng,bnb,wnb,wng,wbc,wbf,bbc,bbf)
 
-def changeValuest(wpa1,wpb1,wpc1,wpd1,wpe1,wpf1,wpg1,wph1,bpa1,bpb1,bpc1,bpd1,bpe1,bpf1,bpg1,bph1,wra1,wrh1,bra1,brh1,wq1,bq1,wk1,bk1,bng1,bnb1,wnb1,wng1,bcc,wbf1,bbc1,bbf1):
+def changeValuest(wpa1,wpb1,wpc1,wpd1,wpe1,wpf1,wpg1,wph1,bpa1,bpb1,bpc1,bpd1,bpe1,bpf1,bpg1,bph1,wra1,wrh1,bra1,brh1,wq1,bq1,wk1,bk1,bng1,bnb1,wnb1,wng1,wbc1,wbf1,bbc1,bbf1):
   global wpa
   global wpb
   global wpc
@@ -208,6 +209,7 @@ def changeValuest(wpa1,wpb1,wpc1,wpd1,wpe1,wpf1,wpg1,wph1,bpa1,bpb1,bpc1,bpd1,bp
   wrh = wrh1
   bra = bra1
   brh = brh1
+  wbc = wbc1
   wq = wq1
   wk = wk1
   bk = bk1
@@ -218,7 +220,6 @@ def changeValuest(wpa1,wpb1,wpc1,wpd1,wpe1,wpf1,wpg1,wph1,bpa1,bpb1,bpc1,bpd1,bp
   wbf = wbf1
   bbc = bbc1
   bbf = bbf1
-  
 def whatPiece(x,y):
 	cor = (x,y)
 	if cor == wpa:
@@ -291,103 +292,184 @@ def whatPiece(x,y):
 	else:
 		return("none")
 
-
+import cordinates
 
 def usermove():
-
-  while True:
-  	start = input("\nEnter the cordinates of the piece you're moving \n > ")
-  	if len(start) != 3:
-  		print("\nUse the right format!")
-  		continue
-  	startx = start[0]
-  	starty = start[2]
-  	try:
-  		startx = int(startx)
-  	except:
-  		print("\nUse the right format!")
-  		continue
-  	try:
-  		starty = int(starty)
-  	except:
-  		print("\nUse the right format!")
-  		continue
-  	if startx > 8 or startx < 0:
-  		print("\nUse the right format!")
-  		continue
-  	if starty > 8 or starty < 0:
-  		print("\nUse the right format!")
-  		continue
-  	if Open.isblockedw(startx,starty,wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,wra,wnb,wbc,wq,wk,wbf,wng,wrh)==False:
-  		print("\nYou dont have a piece there!")
-  		continue
-  	break
-  while True:
-  	piece=whatPiece(startx, starty)
-  	if piece[1]=="p":
-  	  end = input("\nWhere would you like to move your pawn? \n > ")
-  	if piece[1]=="r":
-  	  end = input("\nWhere would you like to move your rook? \n > ")
-  	if piece[1]=="n":
-  	  end = input("\nWhere would you like to move your knight? \n > ")
-  	if piece[1]=="b":
-  	  end = input("\nWhere would you like to move your bishop? \n > ")
-  	if piece[1]=="q":
-  	  end = input("\nWhere would you like to move your queen? \n > ")
-  	if piece[1]=="k":
-  	  end = input("\nWhere would you like to move your king? \n > ")
-  	if len(end) != 3:
-  		print("\nUse the right format!")
-  		continue
-  	if end == 'nvm':
-  		userMove()
-  	endx = end[0]
-  	endy = end[2]
-  	try:
-  		endx = int(endx)
-  	except:
-  		print("\nUse the right format!")
-  		continue
-  	try:
-  		endy = int(endy)
-  	except:
-  		print("\nUse the right format!")
-  		continue
-  	if endx > 8 or endx < 0:
-  		print("\nUse the right format!")
-  		continue
-  	if endy > 8 or endy < 0:
-  		print("\nUse the right format!")
-  		continue
-  	if (endx == startx) and (endy == starty):
-  		print("\nYou need to move!")
-  		continue
-  	if Open.isblockedw(endx,endy,wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,wra,wnb,wbc,wq,wk,wbf,wng,wrh) == True:
-  		print("\nThat place is blocked!")
-  		continue
-  	
-  	
-  	#Put any other input validation above 
-  	import LMFPGC
-  	legalmovesfp = LMFPGC.LMFPGC(startx,starty)
-  	endCord = (endx,endy)
-  	
-  	legal = False
-  	for i in range(len(legalmovesfp)):
-  		
-  		if endCord == legalmovesfp[i]:
-  			legal = True
-  			break
-  	if legal == False:
-  		print("\nNot a legal move")
-  		continue
-  	else:
-  		break
-  print("\nCleared!")
+  cords = getValues()
+  wpa=cords[0]
+  wpb=cords[1]
+  wpc=cords[2]
+  wpd=cords[3]
+  wpe=cords[4]
+  wpf=cords[5]
+  wpg=cords[6]
+  wph=cords[7]
+  wra=cords[16]
+  wnb=cords[26]
+  wbc=cords[28]
+  wq=cords[20]
+  wk=cords[22]
+  wbf=cords[29]
+  wng=cords[27]
+  wrh=cords[17]
+  bpa=cords[8]
+  bpb=cords[9]
+  bpc=cords[10]
+  bpd=cords[11]
+  bpe=cords[12]
+  bpf=cords[13]
+  bpg=cords[14]
+  bph=cords[15]
+  bra=cords[18]
+  bnb=cords[25]
+  bbc=cords[30]
+  bq=cords[21]
+  bk=cords[23]
+  bbf=cords[31]
+  bng=cords[24]
+  brh=cords[19]
+  tryAgain=True
+  while tryAgain == True:
+    while True:
+      start = input("\nEnter the cordinates of the piece you're moving \n > ")
+      
+      if len(start) != 3:
+        print("Use the right format!",end="\r")
+        continue
+      startx = start[0]
+      starty = start[2]
+      try:
+        startx = int(startx)
+      except:
+        print("\nUse the right format!")
+        continue
+      try:
+      	starty = int(starty)
+      except:
+      	print("\nUse the right format!")
+      	continue
+      if startx > 8 or startx < 0:
+      	print("\nUse the right format!")
+      	continue
+      if starty > 8 or starty < 0:
+      	print("\nUse the right format!")
+      	continue
+      if Open.isblockedw(startx,starty,wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,wra,wnb,wbc,wq,wk,wbf,wng,wrh)==False:
+      	print("\nYou dont have a piece there!")
+      	continue
+      break
+    while tryAgain==True:
+    	piece=whatPiece(startx, starty)
+    	if piece[1]=="p":
+    		end = input("Where would you like to move your pawn? \n > ")
+    	if piece[1]=="r":
+    		end = input("\nWhere would you like to move your rook? \n > ")
+    	if piece[1]=="n":
+    		end = input("\nWhere wouldlike to move your knight> ")
+    	if piece[1]=="b":
+    		end = input("\nWhere wouldlike to move your bishop> ")
+    	if piece[1]=="q":
+    		end = input("\nWhere would you like to move your queen? \n > ")
+    	if piece[1]=="k":
+    		end = input("\nWhere would you like to move your king? \n > ")
+    	if len(end) != 3:
+    		print("\nUse the right format!")
+    		continue
+    	if end == 'nvm':
+    		break
+    	endx = end[0]
+    	endy = end[2]
+    	try:
+    		endx = int(endx)
+    	except:
+    		print("\nUse the right format!")
+    		continue
+    	try:
+    		endy = int(endy)
+    	except:
+    		print("\nUse the right format!")
+    		continue
+    	if endx > 8 or endx < 0:
+    		print("\nUse the right format!")
+    		continue
+    	if endy > 8 or endy < 0:
+    		print("\nUse the right format!")
+    		continue
+    	if (endx == startx) and (endy == starty):
+    		print("\nYou need to move!")
+    		continue
+    	if Open.isblockedw(endx,endy,wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,wra,wnb,wbc,wq,wk,wbf,wng,wrh) == True:
+    		print("\nThat place is blocked!")
+    		continue
+    	tryAgain = False
+		  
+    #Put any other input validation above 
+    import LMFPGC
+    legalmovesfp = LMFPGC.LMFPGC(startx,starty)
+    endCord = (endx,endy)
+    legal = False
+    for i in range(len(legalmovesfp)):
+    	if endCord == legalmovesfp[i]:
+    		legal = True
+    		break
+    if legal == False:
+    	print("Not a legal move.")
+    	piece=whatPiece(startx, starty)
+    	if piece[1]=="p":
+    		end = input("Where would you like to move your pawn? \n > ")
+    	if piece[1]=="r":
+    		end = input("\nWhere would you like to move your rook? \n > ")
+    	if piece[1]=="n":
+    		end = input("\nWhere wouldlike to move your knight> ")
+    	if piece[1]=="b":
+    		end = input("\nWhere wouldlike to move your bishop> ")
+    	if piece[1]=="q":
+    		end = input("\nWhere would you like to move your queen? \n > ")
+    	if piece[1]=="k":
+    		end = input("\nWhere would you like to move your king? \n > ")
+    	tryAgain=True
+    	continue
+    	# else:
+    	# 	print(end="\r")
+    	# 	break
+  print("\nCleared!", end="\r")
   piece = whatPiece(startx,starty)
   cor = (endx,endy)
+  if cor == bpa:
+    bpa = (12,12)
+  if cor == bpb:
+    bpb = (12,12)
+  if cor == bpc:
+    bpc = (12,12)
+  if cor == bpd:
+    bpd = (12,12)
+  if cor == bpe:
+    bpe = (12,12)
+  if cor == bpf:
+    bpf = (12,12)
+  if cor == bpg:
+    bpg = (12,12)
+  if cor == bph:
+    bph = (12,12)
+  if cor == bra:
+    bra = (12,12)
+  if cor == bnb:
+    bnb = (12,12)
+  if cor == bbc:
+    bbc = (12,12)
+  if cor == bq:
+    bq = (12,12)
+  if cor == bk:
+    bk = (12,12)
+  if cor == bbf:
+    bbf = (12,12)
+  if cor == bng:
+    bng = (12,12)
+  if cor == brh:
+    brh = (12,12)
+  
   if piece == "wpa":
-    changeValuest(cor,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,wra,wrh,bra,brh,wq,bq,wk,bk,bng,bnb,wnb,wng,wbc,wbf,bbc,bbf)
+    changeValues(cor,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,wra,wrh,bra,brh,wq,bq,wk,bk,bng,bnb,wnb,wng,wbc,wbf,bbc,bbf)
   elif piece == "wpb":
     changeValues(wpa,cor,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,wra,wrh,bra,brh,wq,bq,wk,bk,bng,bnb,wnb,wng,wbc,wbf,bbc,bbf)
   elif piece == "wpc":
@@ -453,7 +535,6 @@ def usermove():
   	changeValues(wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,wra,wrh,bra,brh,wq,bq,wk,bk,bng,bnb,wnb,cor,wbc,wbf,bbc,bbf)
   elif piece == "wrh":
   	changeValues(wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,wra,cor,bra,brh,wq,bq,wk,bk,bng,bnb,wnb,wng,wbc,wbf,bbc,bbf)
-  # SPAWN.draw(wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,wra,wrh,bra,brh,wq,bq,wk,bk,bng,bnb,wnb,wng,wbc,wbf,bbc,bbf)
     
   
 

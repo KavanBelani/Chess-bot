@@ -3,7 +3,7 @@ import Open
 def white_bishop(x,y,wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,wra,wrh,bra,brh,wq,bq,wk,bk,bng,bnb,wnb,wng,wbc,wbf,bbc,bbf):
   moves=[]
   position=(x,y)
-  if (x,y)!=(9,9):
+  if (x,y)!=(12,12):
     for i in [1,2,3,4,5,6,7,8]:
       if Open.isblockedw((x,y)[0]+i,(x,y)[1]+i,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,bra,bnb,bbc,bq,bk,bbf,bng,brh)==True or i+(x,y)[0]>8 or i +(x,y)[1]>8 or i+(x,y)[0]<=0 or i +(x,y)[1]<=0: 
         break
@@ -69,7 +69,7 @@ def black_bishop(x,y,wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg
   moves=[]
   position=(x,y)
   
-  if (x,y)!=(9,9):
+  if (x,y)!=(12,12):
     for i in [1,2,3,4,5,6,7,8]:
       if Open.isblockedb((x,y)[0]+i,(x,y)[1]+i,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,bra,bnb,bbc,bq,bk,bbf,bng,brh)==True or i+(x,y)[0]>8 or i +(x,y)[1]>8 or i+(x,y)[0]<=0 or i +(x,y)[1]<=0: 
         break

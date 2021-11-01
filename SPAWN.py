@@ -1,7 +1,7 @@
 import Characters
 def a(wpa):
   wpa=(wpa[0],wpa[1]+1)
-  
+ 
 def draw(wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,wra,wrh,bra,brh,wq,bq,wk,bk,bng,bnb,wnb,wng,wbc,wbf,bbc,bbf):
   Characters.drawboard()
 

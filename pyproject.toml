@@ -9,7 +9,7 @@ python = "^3.8"
 characters = "^0.1.0"
 co = "^0.2.0"
 python-vlc = "^3.0.12118"
-playsound = "^1.2.2"
+cl-chess = "^1.2.7"
 
 [tool.poetry.dev-dependencies]
 

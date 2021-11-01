@@ -3,6 +3,7 @@ pen=turtle.Turtle()
 #creates turtle called pen
 turtle.tracer(0,0)
 #allows turtle to draw faster
+
 pen.width(2)
 def king(x,y,color):
   #function draws king in any location on the board. 

@@ -1,29 +1,40 @@
 [[package]]
-category = "main"
-description = "Freely available tools for computational molecular biology."
 name = "biopython"
+version = "1.79"
+description = "Freely available tools for computational molecular biology."
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.79"
 
 [package.dependencies]
 numpy = "*"
 
 [[package]]
-category = "main"
-description = "Tools for manipulating characters, strings, and character sets."
 name = "characters"
+version = "0.1.0"
+description = "Tools for manipulating characters, strings, and character sets."
+category = "main"
 optional = false
 python-versions = "*"
-version = "0.1.0"
 
 [[package]]
+name = "cl-chess"
+version = "1.2.7"
+description = "A program to play chess on the command line"
 category = "main"
-description = "Python library for making and tracking mutated copies of DNA components"
-name = "co"
 optional = false
 python-versions = "*"
+
+[package.dependencies]
+termcolor = "*"
+
+[[package]]
+name = "co"
 version = "0.2.0"
+description = "Python library for making and tracking mutated copies of DNA components"
+category = "main"
+optional = false
+python-versions = "*"
 
 [package.dependencies]
 biopython = ">=1.63"
@@ -34,59 +45,60 @@ six = ">=1.5.2"
 docs = ["sphinx", "sphinx-rtd-theme"]
 
 [[package]]
-category = "main"
-description = "Editable interval tree data structure for Python 2 and 3"
 name = "intervaltree"
+version = "3.1.0"
+description = "Editable interval tree data structure for Python 2 and 3"
+category = "main"
 optional = false
 python-versions = "*"
-version = "3.1.0"
 
 [package.dependencies]
 sortedcontainers = ">=2.0,<3.0"
 
 [[package]]
-category = "main"
-description = "NumPy is the fundamental package for array computing with Python."
 name = "numpy"
+version = "1.20.3"
+description = "NumPy is the fundamental package for array computing with Python."
+category = "main"
 optional = false
 python-versions = ">=3.7"
-version = "1.20.3"
 
 [[package]]
-category = "main"
-description = "Pure Python, cross platform, single function module with no dependencies for playing sounds."
-name = "playsound"
-optional = false
-python-versions = "*"
-version = "1.2.2"
-
-[[package]]
-category = "main"
-description = "VLC bindings for python."
 name = "python-vlc"
+version = "3.0.12118"
+description = "VLC bindings for python."
+category = "main"
 optional = false
 python-versions = "*"
-version = "3.0.12118"
 
 [[package]]
-category = "main"
-description = "Python 2 and 3 compatibility utilities"
 name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
-version = "1.16.0"
 
 [[package]]
-category = "main"
-description = "Sorted Containers -- Sorted List, Sorted Dict, Sorted Set"
 name = "sortedcontainers"
+version = "2.4.0"
+description = "Sorted Containers -- Sorted List, Sorted Dict, Sorted Set"
+category = "main"
 optional = false
 python-versions = "*"
-version = "2.4.0"
+
+[[package]]
+name = "termcolor"
+version = "1.1.0"
+description = "ANSII Color formatting for output in terminal."
+category = "main"
+optional = false
+python-versions = "*"
 
 [metadata]
-content-hash = "b1848641a2295720fed75a68e05c15fa87de6594705e83348e6a6145c4018558"
+lock-version = "1.1"
 python-versions = "^3.8"
+content-hash = "0f8fb350c809e61aa78759a3216fb4d22fed5b0d1cee1262aca503b61a5f01d9"
 
 [metadata.files]
 biopython = [
@@ -118,6 +130,10 @@ biopython = [
 ]
 characters = [
     {file = "characters-0.1.0.tar.gz", hash = "sha256:cbd749d58de6ce9b116d189853430ae2c58b954a5375acc325d1960a436dd8f2"},
+]
+cl-chess = [
+    {file = "cl-chess-1.2.7.tar.gz", hash = "sha256:eb68bbdd850cff31fdd52f5256ea66cffdfd741dd02add73a95c795ec5ab2031"},
+    {file = "cl_chess-1.2.7-py3-none-any.whl", hash = "sha256:6ace73c8fc71abdef4a06c19e340139ff0f89580e28a2f7f748e52690ed5b360"},
 ]
 co = [
     {file = "co-0.2.0.tar.gz", hash = "sha256:ec9095b71f096b0c2fbf00d2be237746863d1fc644f070b894ab7acc95e76e94"},
@@ -151,9 +167,6 @@ numpy = [
     {file = "numpy-1.20.3-pp37-pypy37_pp73-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:4e465afc3b96dbc80cf4a5273e5e2b1e3451286361b4af70ce1adb2984d392f9"},
     {file = "numpy-1.20.3.zip", hash = "sha256:e55185e51b18d788e49fe8305fd73ef4470596b33fc2c1ceb304566b99c71a69"},
 ]
-playsound = [
-    {file = "playsound-1.2.2-py2.py3-none-any.whl", hash = "sha256:1e83750a5325cbccee03d6e751ba3e78c037ac95b95a3ba1f38d0c5aca9e1a34"},
-]
 python-vlc = [
     {file = "python-vlc-3.0.12118.tar.gz", hash = "sha256:566f2f7c303f6800851cacc016df1c6eeec094ad63e0a49d87db9d698094f1fb"},
     {file = "python_vlc-3.0.12118-py3-none-any.whl", hash = "sha256:f88be06c6f819a4db2de1c586b193b5df1410ff10fca33b8c6f4e56037c46f7b"},
@@ -165,4 +178,7 @@ six = [
 sortedcontainers = [
     {file = "sortedcontainers-2.4.0-py2.py3-none-any.whl", hash = "sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0"},
     {file = "sortedcontainers-2.4.0.tar.gz", hash = "sha256:25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88"},
+]
+termcolor = [
+    {file = "termcolor-1.1.0.tar.gz", hash = "sha256:1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b"},
 ]

@@ -7,14 +7,14 @@ def knight(x,y,color,wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,bpa,bpb,bpc,bpd,bpe,bpf,bpg
     for i in range(8):
       if Open.isblockedw(x+x1[i],y+y1[i],wpa,wpb,wpc,wpd,wpe,wpf,wpg,wph,wra,wnb,wbc,wq,wk,wbf,wng,wrh)==True or x+x1[i]>8 or x+x1[i]<=0 or y+y1[i]>8 or y+y1[i]<=0:
         continue
-      else:
+      elif (x,y)!=(12,12):
         moves.append((x,y))
         moves.append(((x+x1[i]),(y+y1[i])))
   if color=="black":
     for i in range(8):
       if Open.isblockedb(x+x1[i],y+y1[i],bpa,bpb,bpc,bpd,bpe,bpf,bpg,bph,bra,bnb,bbc,bq,bk,bbf,bng,brh)==True or x+x1[i]>8 or x+x1[i]<=0 or y+y1[i]>8 or y+y1[i]<=0:
         continue
-      else:
+      elif (x,y)!=(12,12):
         moves.append((x,y))
         moves.append(((x+x1[i]),(y+y1[i])))
   return(moves)
